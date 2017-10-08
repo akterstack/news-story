@@ -1,20 +1,30 @@
 package com.newsstories.story;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/stories")
 public class StoryController {
 
+    private StoryRepository storyRepository;
+
+    public StoryController(StoryRepository storyRepository) {
+        this.storyRepository = storyRepository;
+    }
+
     @GetMapping("/")
-    public List<Map> list() {
-        return new ArrayList<>();
+    public Page<Story> list(Pageable pageable) {
+        return storyRepository.findAll(pageable);
+    }
+
+    @GetMapping("/{id}")
+    public Story get(@PathVariable Long id) {
+        return storyRepository.findOne(id);
     }
 
 }
