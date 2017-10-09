@@ -1,10 +1,14 @@
 package com.newsstories.story;
 
+import com.newsstories.author.Author;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -19,6 +23,9 @@ public class Story {
 
     @Column(length = Integer.MAX_VALUE)
     private String body;
+
+    @ManyToOne
+    private Author author;
 
     public Long getId() {
         return id;
@@ -42,5 +49,13 @@ public class Story {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 }
