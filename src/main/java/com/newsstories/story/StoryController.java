@@ -2,7 +2,6 @@ package com.newsstories.story;
 
 import com.newsstories.author.Author;
 import com.newsstories.author.AuthorRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/stories")
+@RequestMapping("/api/stories")
 public class StoryController {
 
     private StoryRepository storyRepository;
@@ -24,7 +23,7 @@ public class StoryController {
         this.authorRepository = authorRepository;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public Page<Story> list(Pageable pageable) {
         return storyRepository.findAll(pageable);
     }
