@@ -14,7 +14,7 @@ function load (component) {
   return () => import(`@/${component}.vue`)
 }
 */
-var apiBaseUrl = 'http://localhost:8080/api'
+var apiBaseUrl = 'http://localhost/api'
 export default new VueRouter({
   /*
    * NOTE! VueRouter "history" mode DOESN'T works for Cordova builds,
@@ -31,6 +31,6 @@ export default new VueRouter({
   routes: [
     { path: '/', component: Feeds },
     { name: 'news_detail', path: '/stories/:id', component: NewsDetail },
-    { name: 'news_detail_json', path: apiBaseUrl + ':id' }
+    { name: 'news_detail_json', path: apiBaseUrl + '/stories/:id' }
   ]
 })

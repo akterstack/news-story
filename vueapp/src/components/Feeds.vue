@@ -5,7 +5,7 @@
         <q-card inline color="secondary">
           <q-card-title>
             {{story.title}}
-            <span slot="subtitle">{{story.author.fullName}}</span>
+            <span slot="subtitle">{{story.author.fullName}} . {{story.publishedDate}}</span>
           </q-card-title>
           <q-card-main>
             {{story.body}}

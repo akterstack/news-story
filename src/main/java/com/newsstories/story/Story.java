@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Size;
+import java.util.Date;
 
 @Entity
 public class Story {
@@ -23,6 +24,8 @@ public class Story {
 
     @Column(length = Integer.MAX_VALUE)
     private String body;
+
+    private Date publishedDate;
 
     @ManyToOne
     private Author author;
@@ -49,6 +52,14 @@ public class Story {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public Date getPublishedDate() {
+        return publishedDate;
+    }
+
+    public void setPublishedDate(Date publishedDate) {
+        this.publishedDate = publishedDate;
     }
 
     public Author getAuthor() {

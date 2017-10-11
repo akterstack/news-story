@@ -13,3 +13,4 @@ node_modules
 *.iml
 *.ipr
 *.iws
+/src/main/resources/static
