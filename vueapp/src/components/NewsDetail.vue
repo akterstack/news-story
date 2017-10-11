@@ -10,6 +10,7 @@
       </q-card-main>
       <q-card-separator />
       <q-card-actions>
+        <q-btn flat @click="back()">Back</q-btn>
       </q-card-actions>
     </q-card>
   </div>
@@ -58,6 +59,10 @@ export default {
           console.log(resp.data)
           this.story = resp.data
         })
+    },
+
+    back: function () {
+      this.$router.go(-1)
     }
   }
 }
