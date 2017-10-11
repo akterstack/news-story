@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import Feeds from '@/Feeds.vue'
+import NewsDetail from '@/NewsDetail.vue'
 
 Vue.use(VueRouter)
 
@@ -28,6 +29,7 @@ export default new VueRouter({
    */
 
   routes: [
-    { path: '/', component: Feeds }
+    { path: '/', component: Feeds },
+    { name: 'news_detail', path: '/stories/:id', component: NewsDetail }
   ]
 })

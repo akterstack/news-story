@@ -2,8 +2,15 @@
   <!-- Don't drop "q-app" class -->
   <div id="q-app">
     <header></header>
-    <main>
-      <router-view></router-view>
+    <main>  
+      <q-layout>
+        <q-toolbar slot="header">
+          <q-toolbar-title>
+            <h6>News Today</h6>
+          </q-toolbar-title>
+        </q-toolbar>
+        <router-view></router-view>
+      </q-layout>
     </main>
   </div>
 </template>
@@ -12,7 +19,18 @@
 /*
  * Root component
  */
-export default {}
+import {
+  QLayout,
+  QToolbar,
+  QToolbarTitle
+} from 'quasar'
+export default {
+  components: {
+    QLayout,
+    QToolbar,
+    QToolbarTitle
+  }
+}
 </script>
 
 <style lang="stylus">
@@ -20,7 +38,7 @@ export default {}
 
 main
   text-align center
-  margin-top 40px
+  margin-top 0px
 
 header
   margin 0
