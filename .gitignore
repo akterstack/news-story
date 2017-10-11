@@ -7,8 +7,9 @@
 !.eslintignore
 !.eslintrc.js
 !.stylintrc
-build
+!build
 target
+node_modules
 *.iml
 *.ipr
 *.iws
