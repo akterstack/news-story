@@ -13,6 +13,7 @@
           <q-card-separator />
           <q-card-actions>
             <q-btn flat @click="getStory( story.id )">HTML</q-btn>
+            <q-btn flat @click="getStoryJSON( story.id )">JSON</q-btn>
           </q-card-actions>
         </q-card>
       </div>
@@ -60,8 +61,13 @@ export default {
           this.stories = resp.data.content
         })
     },
+
     getStory: function (storyId) {
       this.$router.push({name: 'news_detail', params: {id: storyId}})
+    },
+
+    getStoryJSON: function (storyId) {
+      window.location.href = 'http://localhost:8080/api/stories/' + storyId
     }
   }
 }

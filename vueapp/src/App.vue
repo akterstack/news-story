@@ -6,7 +6,7 @@
       <q-layout>
         <q-toolbar slot="header">
           <q-toolbar-title>
-            <h6>News Today</h6>
+            <h6 class="header-title"><a href="/" style="color: white">News Today</a></h6>
           </q-toolbar-title>
         </q-toolbar>
         <router-view></router-view>
