@@ -5,7 +5,7 @@
         <q-card inline color="secondary">
           <q-card-title>
             {{story.title}}
-            <span slot="subtitle">{{story.author.fullName}} . {{story.publishedDate}}</span>
+            <span slot="subtitle">{{story.author.fullName}} - {{story.publishedDate}}</span>
           </q-card-title>
           <q-card-main>
             {{story.body}}
@@ -49,24 +49,23 @@ export default {
     }
   },
 
-  created: function () {
+  created () {
     this.fetchStories()
   },
 
   methods: {
-    fetchStories: function () {
-      this.$http.get('/stories')
+    fetchStories () {
+      this.$http.get('/stories?sort=publishedDate,desc')
         .then(resp => {
-          console.log(resp.data)
           this.stories = resp.data.content
         })
     },
 
-    getStory: function (storyId) {
+    getStory (storyId) {
       this.$router.push({name: 'news_detail', params: {id: storyId}})
     },
 
-    getStoryJSON: function (storyId) {
+    getStoryJSON (storyId) {
       window.location.href = 'http://localhost:8080/api/stories/' + storyId
     }
   }

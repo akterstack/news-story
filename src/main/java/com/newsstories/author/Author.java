@@ -3,6 +3,7 @@ package com.newsstories.author;
 
 import com.newsstories.story.Story;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;

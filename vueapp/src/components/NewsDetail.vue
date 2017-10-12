@@ -48,20 +48,19 @@ export default {
     }
   },
 
-  created: function () {
+  created () {
     this.getStory()
   },
 
   methods: {
-    getStory: function () {
+    getStory () {
       this.$http.get('/stories/' + this.$route.params.id)
         .then(resp => {
-          console.log(resp.data)
           this.story = resp.data
         })
     },
 
-    back: function () {
+    back () {
       this.$router.go(-1)
     }
   }

@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 import Feeds from '@/Feeds.vue'
 import NewsDetail from '@/NewsDetail.vue'
+import NewsForm from '@/NewsForm.vue'
 
 Vue.use(VueRouter)
 
@@ -14,7 +15,7 @@ function load (component) {
   return () => import(`@/${component}.vue`)
 }
 */
-var apiBaseUrl = 'http://localhost/api'
+
 export default new VueRouter({
   /*
    * NOTE! VueRouter "history" mode DOESN'T works for Cordova builds,
@@ -29,8 +30,9 @@ export default new VueRouter({
    */
 
   routes: [
-    { path: '/', component: Feeds },
+    { name: 'feeds', path: '/', component: Feeds },
     { name: 'news_detail', path: '/stories/:id', component: NewsDetail },
-    { name: 'news_detail_json', path: apiBaseUrl + '/stories/:id' }
+    { name: 'create_news', path: '/stories/create', component: NewsForm },
+    { name: 'edit_news', path: '/stories/edit/:id', component: NewsForm }
   ]
 })

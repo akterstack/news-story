@@ -2,6 +2,7 @@ package com.newsstories.story;
 
 import com.newsstories.author.Author;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +28,7 @@ public class Story {
 
     private Date publishedDate;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     private Author author;
 
     public Long getId() {
