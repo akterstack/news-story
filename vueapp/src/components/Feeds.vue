@@ -13,7 +13,8 @@
           <q-card-separator />
           <q-card-actions>
             <q-btn flat @click="getStory( story.id )">HTML</q-btn>
-            <q-btn flat @click="getStoryJSON( story.id )">JSON</q-btn>
+            <q-btn flat @click="getStoryJson( story.id )">JSON</q-btn>
+            <q-btn flat @click="getStoryXml( story.id )">XML</q-btn>
           </q-card-actions>
         </q-card>
       </div>
@@ -65,8 +66,12 @@ export default {
       this.$router.push({name: 'news_detail', params: {id: storyId}})
     },
 
-    getStoryJSON (storyId) {
-      window.location.href = 'http://localhost:8080/api/stories/' + storyId
+    getStoryJson (storyId) {
+      this.$router.push({name: 'news_detail_json', params: {id: storyId}})
+    },
+
+    getStoryXml (storyId) {
+      this.$router.push({name: 'news_detail_xml', params: {id: storyId}})
     }
   }
 }

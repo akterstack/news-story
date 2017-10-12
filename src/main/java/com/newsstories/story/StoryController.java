@@ -1,14 +1,14 @@
 package com.newsstories.story;
 
-import com.newsstories.author.Author;
-import com.newsstories.author.AuthorRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.transaction.Transactional;
@@ -18,12 +18,12 @@ import java.util.Date;
 @RequestMapping("/api/stories")
 public class StoryController {
 
+    private StoryService storyService;
     private StoryRepository storyRepository;
-    private AuthorRepository authorRepository;
 
-    public StoryController(StoryRepository storyRepository, AuthorRepository authorRepository) {
+    public StoryController(StoryService storyService, StoryRepository storyRepository) {
+        this.storyService = storyService;
         this.storyRepository = storyRepository;
-        this.authorRepository = authorRepository;
     }
 
     @GetMapping
@@ -39,10 +39,7 @@ public class StoryController {
     @PostMapping
     @Transactional
     public Story createStory(@RequestBody Story story) {
-        if (story.getPublishedDate() == null) {
-            story.setPublishedDate(new Date());
-        }
-        return storyRepository.save(story);
+        return storyService.save(story);
     }
 
 }

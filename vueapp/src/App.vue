@@ -6,7 +6,7 @@
       <q-layout>
         <q-toolbar slot="header">
           <q-toolbar-title>
-            <h6 class="header-title"><a href="/" style="color: white">News Today</a></h6>
+            <q-btn flat class="header-title" @click="routeToRoot()">News Today</q-btn>
           </q-toolbar-title>
         </q-toolbar>
         <router-view></router-view>
@@ -56,12 +56,15 @@ export default {
   },
 
   methods: {
+    routeToRoot () {
+      this.$router.push({name: 'feeds'})
+    },
     renderCreateForm () {
       this.$router.push({name: 'create_news'})
     },
 
     removeCreateForm () {
-      this.$router.push({name: 'feeds'})
+      this.$router.go(-1)
     }
   }
 }

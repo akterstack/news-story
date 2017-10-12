@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 
 import Feeds from '@/Feeds.vue'
 import NewsDetail from '@/NewsDetail.vue'
+import NewsDetailJson from '@/NewsDetailJson.vue'
+import NewsDetailXml from '@/NewsDetailXml.vue'
 import NewsForm from '@/NewsForm.vue'
 
 Vue.use(VueRouter)
@@ -32,6 +34,8 @@ export default new VueRouter({
   routes: [
     { name: 'feeds', path: '/', component: Feeds },
     { name: 'news_detail', path: '/stories/:id', component: NewsDetail },
+    { name: 'news_detail_json', path: '/json/stories/:id', component: NewsDetailJson },
+    { name: 'news_detail_xml', path: '/xml/stories/:id', component: NewsDetailXml },
     { name: 'create_news', path: '/stories/create', component: NewsForm },
     { name: 'edit_news', path: '/stories/edit/:id', component: NewsForm }
   ]
