@@ -36,7 +36,7 @@ export default new VueRouter({
     { name: 'news_detail', path: '/stories/:id', component: NewsDetail },
     { name: 'news_detail_json', path: '/json/stories/:id', component: NewsDetailJson },
     { name: 'news_detail_xml', path: '/xml/stories/:id', component: NewsDetailXml },
-    { name: 'create_news', path: '/stories/create', component: NewsForm },
+    { name: 'create_news', path: '/stories/create/new', component: NewsForm },
     { name: 'edit_news', path: '/stories/edit/:id', component: NewsForm }
   ]
 })
