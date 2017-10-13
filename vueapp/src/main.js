@@ -19,7 +19,7 @@ Vue.config.productionTip = false
 Vue.use(Quasar) // Install Quasar Framework
 
 Vue.prototype.$http = axios.create({
-  baseURL: 'http://localhost:8080/api/'
+  baseURL: PROD ? '/api' : 'http://localhost:8080/api'
 })
 
 if (__THEME === 'mat') {

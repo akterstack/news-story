@@ -3,7 +3,7 @@ package com.newsstories.author;
 
 import com.newsstories.story.Story;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,6 +16,8 @@ public class Author {
     @Id
     @GeneratedValue
     private Long id;
+
+    @Column(unique = true)
     private String fullName;
 
     @OneToMany(mappedBy = "author")

@@ -10,10 +10,13 @@
             <q-input v-model="story.title" float-label="Title" :value="story.title" />
           </q-field>
           <q-field>
-            <q-input type="textarea" v-model="story.body" float-label="Details" :value="story.body" />
+            <q-input v-model="story.author.fullName" float-label="Author" :value="story.author.fullName" />
           </q-field>
           <q-field>
-            <q-input type="text" v-model="story.author.fullName" float-label="Author" :value="story.author.fullName" />
+            <q-datetime v-model="story.publishedDate" format="ddd, DD-MMM-YYYY hh:mm:ss A" type="datetime" />
+          </q-field>
+          <q-field>
+            <q-input type="textarea" v-model="story.body" float-label="Details" :value="story.body" />
           </q-field>
         </q-card-main>
         <q-card-separator />
@@ -41,7 +44,8 @@ import {
   QChipsInput,
   QRating,
   QBtn,
-  QIcon
+  QIcon,
+  date
 } from 'quasar'
 
 export default {
@@ -66,6 +70,7 @@ export default {
   data () {
     return {
       story: {
+        publishedDate: new Date(),
         author: {}
       }
     }
@@ -73,6 +78,8 @@ export default {
 
   methods: {
     submit () {
+      /* format publishedDate according to API format */
+      this.story.publishedDate = date.formatDate(this.story.publishedDate, 'DD-MMM-YYYY hh:mm:ss a')
       this.$http.post('/stories', this.story)
         .then(resp => {
           this.$router.push({name: 'feeds'})
