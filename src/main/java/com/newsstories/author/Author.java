@@ -18,7 +18,7 @@ public class Author {
     private Long id;
     private String fullName;
 
-    @OneToMany
+    @OneToMany(mappedBy = "author")
     private Collection<Story> stories;
 
     public Author() {}

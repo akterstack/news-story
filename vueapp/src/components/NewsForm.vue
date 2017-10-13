@@ -75,7 +75,7 @@ export default {
     submit () {
       this.$http.post('/stories', this.story)
         .then(resp => {
-          this.$router.push({name: 'news_detail', params: {id: resp.data.id}})
+          this.$router.push({name: 'feeds'})
         })
     }
   }

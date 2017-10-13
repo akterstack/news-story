@@ -12,6 +12,7 @@
         <router-view></router-view>
         <q-fixed-position corner="bottom-right" :offset="[560, 16]">
           <q-fab
+            ref="create-story"
             color="primary"
             direction="up"
             class="animate-pop"
