@@ -7,16 +7,16 @@
         </q-card-title>
         <q-card-main>
           <q-field>
-            <q-input v-model="story.title" float-label="Title" :value="story.title" />
+            <q-input v-model="story.title" float-label="Title" />
           </q-field>
           <q-field>
-            <q-input v-model="story.author.fullName" float-label="Author" :value="story.author.fullName" />
+            <q-input v-model="story.author.fullName" float-label="Author" />
           </q-field>
           <q-field>
-            <q-datetime v-model="story.publishedDate" format="ddd, DD-MMM-YYYY hh:mm:ss A" type="datetime" />
+            <q-datetime v-model="story.publishedDate" format="ddd, DD-MMM-YYYY hh:mm:ss A" type="datetime" float-label="Publish Date" />
           </q-field>
           <q-field>
-            <q-input type="textarea" v-model="story.body" float-label="Details" :value="story.body" />
+            <q-input type="textarea" v-model="story.body" float-label="Details" :min-rows="4" />
           </q-field>
         </q-card-main>
         <q-card-separator />
@@ -70,8 +70,12 @@ export default {
   data () {
     return {
       story: {
+        title: '',
+        body: '',
         publishedDate: new Date(),
-        author: {}
+        author: {
+          fullName: ''
+        }
       }
     }
   },
