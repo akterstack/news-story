@@ -2,9 +2,8 @@
   <div class="layout-padding docs-input row justify-center">
     <div style="width: 500px; max-width: 90vw; text-align: left">
       <q-card>
-        <q-card-title>
-          Create News Story
-        </q-card-title>
+        <q-card-title v-if="this.$route.params.id">Edit News Story</q-card-title>
+        <q-card-title v-else>Create News Story</q-card-title>
         <q-card-main>
           <q-field>
             <q-input v-model="story.title" float-label="Title" />
@@ -22,6 +21,7 @@
         <q-card-separator />
         <q-card-actions>
           <q-btn flat color="secondary" @click="submit()">Submit</q-btn>
+          <q-btn flat @click="cancel()">Cancel</q-btn>
         </q-card-actions>
       </q-card>
     </div>
@@ -68,7 +68,7 @@ export default {
   },
 
   data () {
-    return {
+    let data = {
       story: {
         title: '',
         body: '',
@@ -78,6 +78,13 @@ export default {
         }
       }
     }
+    if (this.$route.params.id) {
+      this.$http.get('/stories/' + this.$route.params.id)
+        .then(resp => {
+          data.story = resp.data
+        })
+    }
+    return data
   },
 
   methods: {
@@ -88,6 +95,14 @@ export default {
         .then(resp => {
           this.$router.push({name: 'feeds'})
         })
+    },
+
+    edit (storyId) {
+      this.$router.push({name: 'edit_news', params: {id: storyId}})
+    },
+
+    cancel () {
+      this.$router.go(-1)
     }
   }
 }

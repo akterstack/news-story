@@ -12,6 +12,7 @@
           </q-card-main>
           <q-card-separator />
           <q-card-actions>
+            <q-btn flat @click="edit( story.id )">Edit</q-btn>
             <q-btn flat @click="getStory( story.id )">HTML</q-btn>
             <q-btn flat @click="getStoryJson( story.id )">JSON</q-btn>
             <q-btn flat @click="getStoryXml( story.id )">XML</q-btn>
@@ -72,6 +73,10 @@ export default {
 
     getStoryXml (storyId) {
       this.$router.push({name: 'news_detail_xml', params: {id: storyId}})
+    },
+
+    edit (storyId) {
+      this.$router.push({name: 'edit_news', params: {id: storyId}})
     }
   }
 }
