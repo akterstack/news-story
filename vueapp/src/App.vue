@@ -10,7 +10,7 @@
           </q-toolbar-title>
         </q-toolbar>
         <router-view></router-view>
-        <q-fixed-position corner="bottom-right" :offset="[560, 16]">
+        <q-fixed-position corner="bottom-right" :offset="[16, 16]">
           <q-fab
             ref="createstory"
             color="primary"

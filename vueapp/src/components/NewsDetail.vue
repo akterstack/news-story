@@ -10,6 +10,7 @@
       </q-card-main>
       <q-card-separator />
       <q-card-actions>
+        <q-btn flat @click="edit( story.id )">Edit</q-btn>
         <q-btn flat @click="back()">Back</q-btn>
       </q-card-actions>
     </q-card>
